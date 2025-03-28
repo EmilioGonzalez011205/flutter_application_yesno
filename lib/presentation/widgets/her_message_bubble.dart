@@ -18,7 +18,7 @@ class HerMessageBubble extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text("Hola mi amor, como estas?", 
+            child: Text("Hola amor, como estás?", 
             style: TextStyle(color: Colors.white),
             ),
           )
@@ -29,10 +29,6 @@ class HerMessageBubble extends StatelessWidget {
         _ImageBubble(),
 
         const SizedBox(height: 10,),
-
-
-        //Todo imagen
-
       ],
     );
     
@@ -51,7 +47,19 @@ class _ImageBubble extends StatelessWidget {
       child: Image.network("https://yesno.wtf/assets/yes/6-304e564038051dab8a5aa43156cdc20d.gif",
       width: size.width * 0.70,
       height: 150,
-      fit: BoxFit.cover,)
-      );
+      fit: BoxFit.cover,
+      loadingBuilder: (context, child, loadingProgress) {
+
+        if (loadingProgress == null) return child;
+
+        return Container (
+          width: size.width * 0.7,
+          height: 150,
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          child: const Text("Mi amor está enviando una foto...")
+        );
+
+      } ,      
+      ));
   }
 }
