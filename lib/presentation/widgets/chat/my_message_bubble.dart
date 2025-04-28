@@ -1,11 +1,13 @@
 import "package:flutter/material.dart";
+import "package:flutter_application_yesno/domain/entities/message.dart";
 
 class MyMessageBubble extends StatelessWidget {
-  const MyMessageBubble({super.key});
+  //variable de la identidad atómica Message.
+  final Message message;
+  const MyMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
-
     final colors = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -17,7 +19,7 @@ class MyMessageBubble extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text("Hola amor, bien y tú?", style: TextStyle(color: Colors.white)),
+            child: Text(message.text, style: const TextStyle(color: Colors.white)),
           )
         ),
 

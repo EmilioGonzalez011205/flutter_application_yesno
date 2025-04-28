@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import "package:flutter/material.dart";
 
 class HerMessageBubble extends StatelessWidget {
@@ -46,7 +48,7 @@ class _ImageBubble extends StatelessWidget {
       borderRadius: BorderRadius.circular(20),
       child: Image.network("https://yesno.wtf/assets/yes/6-304e564038051dab8a5aa43156cdc20d.gif",
       width: size.width * 0.70,
-      height: 150,
+      height: 250,
       fit: BoxFit.cover,
       loadingBuilder: (context, child, loadingProgress) {
 
