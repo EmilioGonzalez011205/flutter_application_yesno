@@ -9,6 +9,7 @@ class MyMessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+    DateTime ahora = DateTime.now();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -19,7 +20,22 @@ class MyMessageBubble extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text(message.text, style: const TextStyle(color: Colors.white)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  message.text,
+                  style: TextStyle(color: Colors.white),
+                ),
+                Row(
+                  children: [
+                    Text('Enviado: ${ahora.hour}:${ahora.minute}', style: TextStyle(color: Colors.blue),),
+                    const SizedBox(width: 10,),
+                    Icon(Icons.done_all_outlined, color: Colors.white, size: 20,),
+                  ],
+                ),
+              ],
+            ),
           )
         ),
 

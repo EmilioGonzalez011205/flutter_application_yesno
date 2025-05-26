@@ -1,11 +1,12 @@
-// ignore_for_file: avoid_print, unused_element_parameter
+// ignore_for_file: avoid_print, unused_element_parameter, sort_child_properties_last, prefer_interpolation_to_compose_strings, must_be_immutable
 
 import "package:flutter/material.dart";
 import "package:flutter_application_yesno/domain/entities/message.dart";
 
 class HerMessageBubble extends StatelessWidget {
   final Message message;
-   const HerMessageBubble({super.key, required this.message});
+  DateTime ahora = DateTime.now();
+     HerMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +23,23 @@ class HerMessageBubble extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text(message.text, 
-            style: TextStyle(color: Colors.white),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  message.text,
+                  style: TextStyle(color: Colors.white),
+                ),
+                Row(
+                  children: [
+                    Text('Enviado: ${ahora.hour}:${ahora.minute}', style: TextStyle(color: Colors.blue),),
+                    const SizedBox(width: 10,),
+                    Icon(Icons.done_all_outlined, color: Colors.white, size: 20,),
+                  ],
+                ),
+              ],
             ),
-          )
+          ),
         ),
 
         const SizedBox(height: 5),
